@@ -1,0 +1,19 @@
+package org.example.Questions;
+
+import net.serenitybdd.rest.SerenityRest;
+import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.Question;
+
+public class ResponseCode implements Question<Integer>{
+
+    public static Question<Integer> getStatus() {
+        return new ResponseCode();
+    }
+
+    // Retorna el código obtenido de la respuesta de la API
+    @Override
+    public Integer answeredBy(Actor actor) {
+        return SerenityRest.lastResponse().statusCode();
+    }
+
+}
